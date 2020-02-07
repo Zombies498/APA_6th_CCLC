@@ -135,9 +135,40 @@ public class NamePrint {
 						appended.add(issue);
 					}
 
-					journalinformation.page();
-					String page = " " + scanner.nextLine() + ".";
-					appended.add(page);
+					magazineinformation.page_num01();
+					String pagString = " " + scanner.nextLine() + ".";
+					if (pagString.equals(" " + "1" + ".")) {
+						appended.add("");
+						endofsourcename_sign2 = 1;
+					} else if (pagString.equals(" " + "2" + ".")) {
+						List<String> pageStrings = new ArrayList<String>(); 
+						String returnString = "";
+						while(true) {
+							magazineinformation.page_num02();
+							String pageString = scanner.nextLine();
+							if (pageString.equals("2")) {
+								break;
+							}else {
+								pageStrings.add(pageString);
+							}
+						}
+						for (int i = 0; i < pageStrings.size(); i++) {
+							if (i == pageStrings.size() - 1 && pageStrings.size() != 1) {
+								returnString += pageStrings.get(i) + "."; 
+							}else if (i == pageStrings.size() - 1 && pageStrings.size() == 1) {
+								returnString += " " + pageStrings.get(i) + "."; 
+							}
+							else if (i == 0){
+								returnString += " " + pageStrings.get(i) + ", ";
+							}else{
+								returnString += pageStrings.get(i) + ", ";
+							}
+						}
+						appended.add(returnString);
+						pageStrings.clear();
+					} else {
+						appended.add(pagString);
+					}
 					break;
 				default:
 					names.add(scString2);
@@ -222,6 +253,8 @@ public class NamePrint {
 					first_next_split = DataProcess.resetArray01(first_next_split);
 					editor_split = DataProcess.resetArray02(editor_split);
 					type_split = DataProcess.resetArrayElement(type_split, 3);//set 1
+					endofsourcename_sign1 = 0;
+					endofsourcename_sign2 = 0;
 					break;
 				case "2":
 					magazineinformation.yaer();
@@ -259,8 +292,40 @@ public class NamePrint {
 					
 					magazineinformation.page_num01();
 					String pagString = " " + scanner.nextLine() + ".";
-					appended.add(pagString);
+					if (pagString.equals(" " + "1" + ".")) {
+						appended.add("");
+						endofsourcename_sign2 = 1;
+					} else if (pagString.equals(" " + "2" + ".")) {
+						List<String> pageStrings = new ArrayList<String>();//case here, we cannot make the scope be a method
+						String returnString = "";
+						while(true) {
+							magazineinformation.page_num02();
+							String pageString = scanner.nextLine();
+							if (pageString.equals("2")) {
+								break;
+							}else {
+								pageStrings.add(pageString);
+							}
+						}
+						for (int i = 0; i < pageStrings.size(); i++) {
+							if (i == pageStrings.size() - 1 && pageStrings.size() != 1) {
+								returnString += pageStrings.get(i) + "."; 
+							}else if (i == pageStrings.size() - 1 && pageStrings.size() == 1) {
+								returnString += " " + pageStrings.get(i) + "."; 
+							}
+							else if (i == 0){
+								returnString += " " + pageStrings.get(i) + ", ";
+							}else{
+								returnString += pageStrings.get(i) + ", ";
+							}
+						}
+						appended.add(returnString);
+						pageStrings.clear();
+					} else {
+						appended.add(pagString);
+					}
 					break;
+					
 				default:
 					names.add(scString3);
 					break;
@@ -331,8 +396,40 @@ public class NamePrint {
 					
 					magazineinformation.page_num01();
 					String pagString = " " + scanner.nextLine() + ".";
-					appended.add(pagString);
+					if (pagString.equals(" " + "1" + ".")) {
+						appended.add("");
+						endofsourcename_sign2 = 1;
+					} else if (pagString.equals(" " + "2" + ".")) {
+						List<String> pageStrings = new ArrayList<String>(); 
+						String returnString = "";
+						while(true) {
+							magazineinformation.page_num02();
+							String pageString = scanner.nextLine();
+							if (pageString.equals("2")) {
+								break;
+							}else {
+								pageStrings.add(pageString);
+							}
+						}
+						for (int i = 0; i < pageStrings.size(); i++) {
+							if (i == pageStrings.size() - 1 && pageStrings.size() != 1) {
+								returnString += pageStrings.get(i) + "."; 
+							}else if (i == pageStrings.size() - 1 && pageStrings.size() == 1) {
+								returnString += " " + pageStrings.get(i) + "."; 
+							}
+							else if (i == 0){
+								returnString += " " + pageStrings.get(i) + ", ";
+							}else{
+								returnString += pageStrings.get(i) + ", ";
+							}
+						}
+						appended.add(returnString);
+						pageStrings.clear();
+					} else {
+						appended.add(pagString);
+					}
 					break;
+					
 				default:
 					names.add(scString4);
 					break;
@@ -425,9 +522,12 @@ public class NamePrint {
 							}
 						}
 						for (int i = 0; i < pageStrings.size(); i++) {
-							if (i == pageStrings.size() - 1) {
+							if (i == pageStrings.size() - 1 && pageStrings.size() != 1) {
 								returnString += pageStrings.get(i) + "."; 
-							}else if (i == 0){
+							}else if (i == pageStrings.size() - 1 && pageStrings.size() == 1) {
+								returnString += " " + pageStrings.get(i) + "."; 
+							}
+							else if (i == 0){
 								returnString += " " + pageStrings.get(i) + ", ";
 							}else{
 								returnString += pageStrings.get(i) + ", ";
@@ -519,9 +619,11 @@ public class NamePrint {
 							}
 						}
 						for (int i = 0; i < pageStrings.size(); i++) {
-							if (i == pageStrings.size() - 1) {
+							if (i == pageStrings.size() - 1 && pageStrings.size() != 1) {
 								returnString += pageStrings.get(i) + "."; 
-							}else if (i == 0){
+							}else if (i == pageStrings.size() - 1 && pageStrings.size() == 1){
+								returnString += " p. " + pageStrings.get(i) + ".";
+							}else if (i == 0) {
 								returnString += " p. " + pageStrings.get(i) + ", ";
 							}else{
 								returnString += pageStrings.get(i) + ", ";
@@ -654,7 +756,7 @@ public class NamePrint {
 						}
 					}
 				
-					journalinformation.page();
+					magazineinformation.page_num01();
 					String pagString = " " + scanner.nextLine() + ".";
 					if (pagString.equals(" " + "1" + ".")) {
 						appended.add("");
@@ -672,10 +774,13 @@ public class NamePrint {
 							}
 						}
 						for (int i = 0; i < pageStrings.size(); i++) {
-							if (i == pageStrings.size() - 1) {
+							if (i == pageStrings.size() - 1 && pageStrings.size() != 1) {
 								returnString += pageStrings.get(i) + "."; 
-							}else if (i == 0){
-								returnString += " p. " + pageStrings.get(i) + ", ";
+							}else if (i == pageStrings.size() - 1 && pageStrings.size() == 1) {
+								returnString += " " + pageStrings.get(i) + "."; 
+							}
+							else if (i == 0){
+								returnString += " " + pageStrings.get(i) + ", ";
 							}else{
 								returnString += pageStrings.get(i) + ", ";
 							}
@@ -685,6 +790,7 @@ public class NamePrint {
 					} else {
 						appended.add(pagString);
 					}
+					
 					if (endofsourcename_sign2 == 1 && endofsourcename_sign2 == 1) {
 						appended.remove(appended.size() - 2);
 						appended.add(appended.size() - 1, " " +journal01 + "(i).");
